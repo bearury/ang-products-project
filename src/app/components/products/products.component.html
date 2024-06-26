@@ -1,0 +1,36 @@
+<div class="border rounded border-blue-200 p-3">
+  @if (product && product.id) {
+    <div class="font-bold text-center py-1"><<{{ product.title }}>></div>
+
+    <div class="flex flex-nowrap gap-5">
+      <img class="w-1/4 rounded" [src]="product.image" [alt]="product.title">
+      <div class="w-full">
+
+        <div class="font-bold text-center text-fuchsia-700">{{ product.category | titlecase }}</div>
+
+        <div>Price:
+          <span [ngStyle]="{fontWeight: 'bold'}">
+            {{ product.price | number: '3.2-4' | currency: 'RUB' }}
+        </span>
+        </div>
+
+
+
+        @if (details) {
+          <div class="mt-2 text-sm text-gray-600">{{ product.description }}</div>
+          <div>Rate: {{ product.rating.rate }}</div>
+        }
+
+        <button
+          (click)="handleClick(product.id)"
+          class="px-4 py-2 border border-violet-600 rounded"
+          [ngClass]="{'bg-amber-300' : !details,'bg-sky-500 text-white' : details}"
+        >
+          {{ details ? 'Hide' : 'Show' }} detail
+        </button>
+      </div>
+    </div>
+  }
+</div>
+
+

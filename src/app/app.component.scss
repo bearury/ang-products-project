@@ -1,0 +1,7 @@
+.routerLinkActive {
+  @apply text-blue-600;
+}
+
+.input {
+  @apply border border-violet-600 py-1 px-4 bg-red-400 my-2 text-white rounded focus:outline-none focus:border-violet-300;
+}
