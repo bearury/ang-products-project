@@ -1,8 +1,8 @@
 <form (ngSubmit)="submit()" [formGroup]="form">
-  <input (beforeinput)="changeInput()" class="border w-full py-2 px-4 mb-2" formControlName="title" type="text">
+  <input appFocus class="border w-full py-2 px-4 mb-2" formControlName="title" type="text">
 
   @if (title.errors !== null && title.touched) {
-    <p class="text-red-700 font-medium my-2">Error</p>
+    <p class="text-red-700 font-medium mb-2">The value is not valid</p>
   }
-  <button class=" py-2 px-4 bg-blue-600 text-white">Create</button>
+  <button [disabled]="disableButton" class="button">Create</button>
 </form>

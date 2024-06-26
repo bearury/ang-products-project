@@ -13,7 +13,6 @@ import { AsyncPipe, NgIf } from '@angular/common';
   styleUrl: './global-error.component.scss',
 })
 export class GlobalErrorComponent implements OnInit {
-
   constructor(public errorService: ErrorService) {
   }
 

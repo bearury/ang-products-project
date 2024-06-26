@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { TitleCasePipe } from '@angular/common';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-modal',
@@ -12,4 +13,7 @@ import { TitleCasePipe } from '@angular/common';
 })
 export class ModalComponent {
   @Input() title?: string;
+
+  constructor(public modalService: ModalService) {
+  }
 }

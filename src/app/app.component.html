@@ -11,7 +11,7 @@
 
   <p *ngIf="loading" class="text-center text-lg">Loading...</p>
 
-  <div *ngIf="products$ | async as products" class="flex flex-col gap-2">
+  <div *ngIf="productsService.products as products" class="flex flex-col gap-2">
     @for (p of products | filterProducts: term; track p.id) {
       <app-products [product]="p"></app-products>
     }
@@ -28,7 +28,14 @@
     <router-outlet />
   </div>
 
-  <app-modal title="Create new products">
+  <app-modal *ngIf="modalService.isVisible$ | async" title="Create new products">
     <app-create-product />
   </app-modal>
+
+  <button
+    (click)="modalService.open()"
+    class="rounded-full bg-sky-300 text-red-400 fixed right-10 bottom-10 px-4 py-2"
+  >
+    &blacklozenge;
+  </button>
 </section>
