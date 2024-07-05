@@ -1,3 +1,17 @@
 .products {
   @apply border border-red-700 px-4 py-2 my-2 cursor-pointer;
 }
+
+.open-close-container {
+  font-weight: bold;
+  font-size: 20px;
+  overflow: hidden;
+}
+
+.selected {
+  @apply text-5xl text-red-700;
+}
+
+.activeGreen {
+  @apply text-green-500;
+}

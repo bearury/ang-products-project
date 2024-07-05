@@ -6,7 +6,11 @@
       <img class="w-1/4 rounded" [src]="product.image" [alt]="product.title">
       <div class="w-full">
 
-        <div class="font-bold text-center text-fuchsia-700">{{ product.category | titlecase }}</div>
+        <div
+        class="font-bold text-center text-fuchsia-700"
+        [ngClass]="{selected: product.category.length > 10}"
+        [class.activeGreen]="product.category.length < 10"
+        >{{ product.category | titlecase }}</div>
 
         <div>Price:
           <span [ngStyle]="{fontWeight: 'bold'}">
@@ -15,19 +19,18 @@
         </div>
 
 
-
-        @if (details) {
-          <div class="mt-2 text-sm text-gray-600">{{ product.description }}</div>
-          <div>Rate: {{ product.rating.rate }}</div>
-        }
-
         <button
           (click)="handleClick(product.id)"
-          class="px-4 py-2 border border-violet-600 rounded"
+          class="px-4 py-2 border border-violet-600 rounded transition-all"
           [ngClass]="{'bg-amber-300' : !details,'bg-sky-500 text-white' : details}"
         >
           {{ details ? 'Hide' : 'Show' }} detail
         </button>
+
+        <div [@openClose]="details ? 'open' : 'closed'" class="open-close-container">
+          <div class="mt-2 text-sm text-gray-600">{{ product.description }}</div>
+          <div>Rate: {{ product.rating.rate }}</div>
+        </div>
       </div>
     </div>
   }
